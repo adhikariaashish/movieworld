@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import { FiThumbsUp } from 'react-icons/fi';
+import {MdDateRange} from "react-icons/md";
 
 export default function Card({ result }) {
   return (
@@ -19,6 +20,7 @@ export default function Card({ result }) {
           <h2 className="text-xl font-bold mt-2 truncate ">{result.title || result.original_name}</h2>
 
           <p className='text-sm flex items-center gap-1'>
+          <MdDateRange className='h-5'/>
           {result.release_date || result.first_air_date}
           <FiThumbsUp className='h-5 ml-3'/>
           {result.vote_count}
