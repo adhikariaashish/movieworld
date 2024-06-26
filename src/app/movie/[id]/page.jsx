@@ -9,7 +9,7 @@ export default async function MoviePage({params}) {
     const voteavg = movie.vote_average;
    return (
     <div className='w-full'>
-        <div className='p-4 md:pt-8 flex flex-col md:flex-row content-center max-w-6xl mx-auto md:sapce-x-6'>
+        <div className='p-4 md:pt-8 flex flex-col md:flex-row sm:flex items-center content-center max-w-6xl mx-auto md:sapce-x-6'>
             <Image
             src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
             width={300}
@@ -22,8 +22,8 @@ export default async function MoviePage({params}) {
 
             </Image>
             
-            <div className="p-2 sm:ml-8 sm:max-w-296">
-                <h2 className='text-4xl font-semibold mb-3 max-w'>{movie.title || movie.name}</h2>
+            <div className="p-2 ml-8 flex flex-col">
+                <h2 className='text-4xl font-semibold mb-3 text-center lg:text-left xl:text-left'>{movie.title || movie.name}</h2>
                 <p className='text-lg mb-3'>{movie.overview}</p>
                 <p className='flex items-center mb-3'><MdDateRange className='mr-2 text-red-500'/><b>Release Date : </b>{movie.release_date || movie.first_air_date}</p>
                 <p className='flex items-center mb-3'><FiStar className='mr-2 text-yellow-400'/><b>Rating : </b>{voteavg.toFixed(1) + " / 10 "}({movie.vote_count} votes)</p>
