@@ -12,7 +12,11 @@ export default function Card({ result }) {
           <Image
             src={`https://image.tmdb.org/t/p/original/${result.backdrop_path || result.poster_path}`}
             width={500}
-            height={300}
+            height={300}   
+              style={{
+                  maxWidth: '100%',
+                  height: '153px',
+              }}
             className='sm:rounded-t-lg transform transition duration-300 ease-in-out group-hover:scale-105'
             alt={`${result.title} Poster`}
           />
