@@ -1,6 +1,6 @@
 import Results from "@/components/Results";
 import Image from "next/image";
-
+import SearchBox from '@/components/SearchBox';
 const API_KEY = process.env.API_KEY;
 
 export default async function Home({ searchParams }) {
@@ -19,8 +19,8 @@ export default async function Home({ searchParams }) {
   const data = await res.json();
   const results = data.results;
 
-
   return <div>
+<SearchBox />
     <Results results={results} />
     
      </div>;

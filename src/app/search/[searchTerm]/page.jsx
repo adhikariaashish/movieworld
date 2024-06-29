@@ -1,5 +1,5 @@
 import Results from '@/components/Results';
-
+import SearchBox from '@/components/SearchBox';
 export default async function SearchPage({ params }) {
   const seachTerm = params.searchTerm;
   const res = await fetch(
@@ -9,6 +9,7 @@ export default async function SearchPage({ params }) {
   const results = data.results;
   return (
     <div>
+      <SearchBox />
       {results &&
         results.length ===
         <h1 className='text-center pt-6'>No results found</h1>}
