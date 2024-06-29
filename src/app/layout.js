@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Movie World',
-  description: 'This is a movie database clone',
+  description: 'This is a movie database website',
 };
 
 export default function RootLayout({ children }) {
