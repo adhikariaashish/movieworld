@@ -16,6 +16,7 @@ export default async function MoviePage({ params }) {
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           width={300}
           height={450}
+          alt={movie.title || movie.name}
           style={{
             maxWidth: "100%",
             height: "100%",

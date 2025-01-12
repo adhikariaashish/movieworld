@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
-import { FiThumbsUp } from 'react-icons/fi';
+import { FiStar } from 'react-icons/fi';
 import {MdDateRange} from "react-icons/md";
 
 export default function Card({ result }) {
@@ -14,8 +14,8 @@ export default function Card({ result }) {
             width={500}
             height={300}   
               style={{
-                  maxWidth: '100%',
-                  height: '153px',
+                  // maxWidth: '100%',
+                  // height: '153px',
               }}
             className='sm:rounded-t-lg transform transition duration-300 ease-in-out group-hover:scale-105'
             alt={`${result.title} Poster`}
@@ -24,10 +24,15 @@ export default function Card({ result }) {
           <h2 className="text-xl font-bold mt-2 truncate ">{result.title || result.original_name}</h2>
 
           <p className='text-sm flex items-center gap-1'>
-          <MdDateRange className='h-5'/>
+          <MdDateRange className='h-5 text-blue-500'/>
           {result.release_date || result.first_air_date}
-          <FiThumbsUp className='h-5 ml-3'/>
-          {result.vote_count}
+          <>
+
+          <FiStar className='h-5 ml-3 text-yellow-300'/>
+          
+          {result.vote_average.toFixed(1) + " / 10 "}
+          </>
+
           </p>
          
         </div>
