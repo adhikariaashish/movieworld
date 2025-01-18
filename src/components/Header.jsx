@@ -10,7 +10,7 @@ export default function Header() {
       <div className='flex gap-12'>
         <MenuItem title='HOME' address='/' Icon={AiFillHome} />
         <MenuItem title='ABOUT' address='/about' Icon={BsFillInfoCircleFill} />
-        <MenuItem title='SIGN UP' address='/' Icon={AiFillHome} />
+        <MenuItem title='SIGN UP' address='/SignIn' Icon={AiFillHome} />
       </div>
       <div className='flex items-center gap-4'>
         <DarkModeSwitch />

@@ -26,13 +26,11 @@ export default function Card({ result }) {
           <p className='text-sm flex items-center gap-1'>
           <MdDateRange className='h-5 text-blue-500'/>
           {result.release_date || result.first_air_date}
-          <>
+          
 
           <FiStar className='h-5 ml-3 text-yellow-300'/>
           
           {result.vote_average.toFixed(1) + " / 10 "}
-          </>
-
           </p>
          
         </div>

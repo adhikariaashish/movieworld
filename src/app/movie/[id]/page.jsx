@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FiClock, FiDollarSign, FiStar } from "react-icons/fi";
 import { MdDateRange } from "react-icons/md";
+
 export default async function MoviePage({ params }) {
   const movieId = params.id;
   const res = await fetch(
@@ -9,20 +10,18 @@ export default async function MoviePage({ params }) {
   );
   const movie = await res.json();
   const voteavg = movie.vote_average;
+
   return (
     <div className="w-full">
-      <div className="p-4 md:pt-8 flex flex-col md:flex-row sm:flex items-center content-center max-w-6xl mx-auto md:sapce-x-6">
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          width={300}
-          height={450}
-          alt={movie.title || movie.name}
-          style={{
-            maxWidth: "100%",
-            height: "100%",
-          }}
-          className="rounded-lg"
-        />
+      <div className="p-4 md:pt-8 flex flex-col md:flex-row sm:flex items-center content-center max-w-6xl mx-auto md:space-x-6">
+        <div className="w-full md:w-[300px] h-[450px] relative">
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path}`}
+            alt={movie.title || movie.name}
+            fill
+            className="object-cover rounded-lg"
+          />
+        </div>
 
         <div className="p-2 ml-8 flex flex-col">
           <h2 className="text-4xl font-semibold mb-3 text-center lg:text-left xl:text-left">
