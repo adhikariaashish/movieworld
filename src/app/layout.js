@@ -7,8 +7,6 @@ import Loader from '@/components/Loader';
 import { ClerkProvider, ClerkLoaded,ClerkLoading } from '@clerk/nextjs';
 // import SearchBox from '@/components/SearchBox';
 
-
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -20,7 +18,6 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
 
-      
     <html lang='en'>
       <body className={inter.className}>
       <Providers>
@@ -30,7 +27,6 @@ export default function RootLayout({ children }) {
         
           <ClerkLoaded> 
 
-        
           <Header />
           <Navbar />
           
