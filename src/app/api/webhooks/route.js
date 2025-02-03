@@ -1,5 +1,6 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
+import { create } from 'domain'
 
 
 export async function POST(req ) {
@@ -45,25 +46,42 @@ export async function POST(req ) {
     })
   }
 
-  // Do something with payload
-  // For this guide, log payload to console
-  const { id } = evt.data
-  const eventType = evt.type
+ 
+  const { id } = evt?.data
+  const eventType = evt?.type
   console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
   console.log('Webhook payload:', body)
 
 
-  if (eventType === 'user.created') {
-    console.log('User created ')
+  if (eventType === 'user.created' || eventType === 'user.updated') {
+    const { first_name, last_name, image_url, email_addresses, username } = evt?.data;
+    try{
+        await createOrUpdateUser(id, first_name, last_name, image_url, email_addresses, username);
+        return new Response('User created', {
+            status: 200,
+        })  
+    }catch (error) {
+      console.log(error);
+      return new Response('Error: Could not connect to database', {
+        status: 500,
+      })
+    }
+    
   }
 
-  
-  if (eventType === 'user.updated') {
-    console.log('User updated ')
-  }
-  
+
   if (eventType === 'user.deleted') {
-    console.log('User deleted ')
-  }
+    const { id } = evt?.data;
+    try{
+        await deleteUser(id);
+        return new Response('User deleted', {
+            status: 200,
+        });
+  }catch (error) {
+    console.log(error);
+    return new Response('Error: Could not connect to database', {
+      status: 500,
+    });
+  }}
   return new Response('Webhook received', { status: 200 })
 }
